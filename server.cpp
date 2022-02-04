@@ -33,6 +33,7 @@ class Server
             {
                 system("sudo service apache2 start");
                 cout << "\tServer Started\n";
+                cout << "\tClick the link to View: "<<"http://localhost/";
             }else
             {   
                 cout << "\tServer Already Running\n";
@@ -55,5 +56,6 @@ class Server
         {
             system("sudo service apache2 restart");
             cout << "\tServer Restarted Sucessfully\n";
+            cout << "\tClick the link to View: "<<"http://localhost/";
         }
 };
