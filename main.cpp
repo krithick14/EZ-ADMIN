@@ -1,5 +1,6 @@
 #include<iostream>
-#include "server.cpp"
+// #include "server.cpp"
+#include "backup.cpp"
 using namespace std;
 int main()
 {
@@ -22,32 +23,44 @@ int main()
     cout << "\tEnter Your Option: ";
     cin >> option;
     Server server;
+
     switch (option)
     {
     case 1:
+    {
         server.start();
         break;
+    }
     
     case 2:
+    {
         server.stop();
         break;
-    
+    }
     case 3:
+    {
         server.restart();
         break;
+    }
     
     case 4:
-        cout << "\tServer Backup\n";
+    {
+        Backup obj;
+        obj.bckup();
         break;
-    
+    }
     case 5:
+    {
         cout << "\tEXITTED\n";
         return 0;
         break;
+    }
     
     default:
+    {
         cout << "\tInvalid Option\n";
         break;
     }
+}
     return 0;
 }

@@ -4,10 +4,13 @@ class Server
 {
     public:
         int stat;
+
         Server()
         {
             stat = system("systemctl status apache2 | grep -i dead >> /dev/null");
         }
+
+
         bool status()
         {    
             
@@ -28,6 +31,7 @@ class Server
                 cout << "\tServer Already Running\n";
             }
         }
+
         void stop()
         {
             if(!status())
