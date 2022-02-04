@@ -12,13 +12,6 @@ int main()
 
     system("figlet A d m i n  M e n u");
     cout << "\n";
-    int user;
-    user = getuid();
-    if (user != 0)
-    {
-        cout << "\t\nROOT Privleges needed\n";
-        return 0;
-    }
     system("systemctl status apache2 | grep -i Active ");
 
     cout << "\n\n\t1)Start Server\n\n";
