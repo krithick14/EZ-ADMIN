@@ -1,10 +1,12 @@
 #include<iostream>
+#include <cstdlib>
+#include<ctime>
+#include<fstream>
 using namespace std;
 class Server
 {
     public:
         int stat;
-
         Server()
         {
             stat = system("systemctl status apache2 | grep -i dead >> /dev/null");
@@ -32,11 +34,20 @@ class Server
             if(status())
             {
                 system("sudo service apache2 start");
-                cout << "\tServer Started\n";
-                cout << "\tClick the link to View: "<<"http://localhost/";
+                time_t ttime = time(0);
+                char* time = ctime(&ttime);
+                cout << "\n\tServer Started by "<< getenv("USER") << " on "<< time <<"\n";
+                fstream out_file;
+                out_file.open("logs.txt",ios::app);
+                out_file << "Server Started by "<< getenv("USER") << " on "<< time <<"\n";
+                cout << "\n\tClick the link to View: "<<"http://localhost/";
             }else
             {   
-                cout << "\tServer Already Running\n";
+                char opt;
+                cout << "\tServer Already Running\n\tWould You Like to STOP (Y/N):";
+                cin >> opt;
+                if(opt=='y'||opt=='Y')
+                    stop();
             }
         }
 
@@ -45,16 +56,32 @@ class Server
             if(!status())
             {
                 system("sudo service apache2 stop");
+                time_t ttime = time(0);
+                char* time = ctime(&ttime);
+                cout << "\n\tServer Stopped by "<< getenv("USER") << " on "<< time <<"\n";
+                fstream out_file;
+                out_file.open("logs.txt",ios::app);
+                out_file << "Server Stopped by "<< getenv("USER") << " on "<< time <<"\n";
                 cout << "\tServer Stopped\n";
             }else
             {   
-                cout << "\tServer Not Running\n";
+                cout << "\tServer Not Running\n\tWould You Like to START (Y/N):";
+                char opt;
+                cin >> opt;
+                if(opt=='y'||opt=='Y')
+                    start();
             }
         }
 
         void restart()
         {
             system("sudo service apache2 restart");
+            time_t ttime = time(0);
+            char* time = ctime(&ttime);
+            cout << "\n\tServer Restarted by "<< getenv("USER") << " on "<< time <<"\n";
+            fstream out_file;
+            out_file.open("logs.txt",ios::app);
+            out_file << "Server Restarted by "<< getenv("USER") << " on "<< time <<"\n";
             cout << "\tServer Restarted Sucessfully\n";
             cout << "\tClick the link to View: "<<"http://localhost/";
         }

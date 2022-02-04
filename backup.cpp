@@ -8,7 +8,7 @@ class Backup:public Server
         {
             if(!status())
             {    
-                cout << "\tServer is Running\n\tCannot Take Backup\n";
+                cout << "\tServer is Running\n\tCannot Take Backup\n\tPlease STOP The server to take backup";
                 return;
             }
 
