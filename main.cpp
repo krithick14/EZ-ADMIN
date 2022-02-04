@@ -1,9 +1,9 @@
 #include<iostream>
-// #include "server.cpp"
 #include "backup.cpp"
 using namespace std;
 int main()
 {
+    while(1){
     int option;
     system("clear");
     // cout << "\t===================\n";
@@ -29,17 +29,20 @@ int main()
     case 1:
     {
         server.start();
+        server.menu();
         break;
     }
     
     case 2:
     {
         server.stop();
+        server.menu();
         break;
     }
     case 3:
     {
         server.restart();
+        server.menu();
         break;
     }
     
@@ -47,6 +50,7 @@ int main()
     {
         Backup obj;
         obj.bckup();
+        server.menu();
         break;
     }
     case 5:
@@ -59,8 +63,10 @@ int main()
     default:
     {
         cout << "\tInvalid Option\n";
+        server.menu();
         break;
     }
 }
+    }
     return 0;
 }

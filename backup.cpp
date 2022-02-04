@@ -26,7 +26,7 @@ class Backup:public Server
             cin >> choice;
             if(choice == 'y' || choice == 'Y')
             {
-                string command="nautilus " + path;
+                string command="nautilus " + path + " >> /dev/null";
                 const char* open=command.c_str();
                 system(open);
             }else

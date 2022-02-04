@@ -10,7 +10,14 @@ class Server
             stat = system("systemctl status apache2 | grep -i dead >> /dev/null");
         }
 
-
+        void menu()
+        {
+            char opt;
+            cout << "\n\tDo you want to return to the menu (Y/N): ";
+            cin >> opt;
+            if(!(opt=='y'||opt=='Y'))
+                exit(0);
+        }
         bool status()
         {    
             
