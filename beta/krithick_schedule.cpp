@@ -13,7 +13,7 @@ class schedule
             cout << "\t2)Schedule Stop\n\n";
             cout << "\t3)Schedule Restart\n\n";
             cout << "\t4)Remove all Scheduled JOBS\n\n";
-            cout << "\t5)Back\n\n";
+       
             int opti;
             cout << "\tEnter your choice: ";
             cin >> opti;
@@ -43,9 +43,10 @@ class schedule
                 cout << "\tAll Scheduled tasks removed\n";
                 system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
             }
-            if(opti==5)
+            else
             {
-                return;
+                cout << "\tInvalid Option\n"; 
+                exit(0);
             }
         }
         void schedule_start(string time)
