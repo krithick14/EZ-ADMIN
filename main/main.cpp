@@ -7,9 +7,9 @@
 using namespace std;
 int main()
 {
+    system("clear");
     while(1){
     int option;
-    system("clear");
 
     system("figlet A d m i n  M e n u");
     cout << "\n";
@@ -19,7 +19,8 @@ int main()
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
     cout << "\t4)Backup Files\n\n";
-    cout << "\t6)Schedule Server\n\n";
+    cout << "\t5)Schedule Server\n\n";
+    cout << "\t6)View Logs\n\n";
     cout << "\t7)Know about commands\n\n";
     cout << "\t8)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
@@ -61,8 +62,22 @@ int main()
         schedule obj;
         Server server;
         obj.schedule_menu();
+        server.menu();
+        break;
     }
     case 6:
+    {
+        ifstream file;
+        file.open("logs.txt");
+        string data;
+        system("clear");
+        system("figlet L O G S");
+        while(getline(file,data))
+            cout << "\t" << data << endl;
+        server.menu();
+        break;
+    }
+    case 7:
     {
         string cmd;
         command obj2;
@@ -73,7 +88,7 @@ int main()
         break;
     }
 
-    case 7:
+    case 8:
     {
         cout << "\tEXITTED\n";
         return 0;
