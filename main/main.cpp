@@ -1,10 +1,14 @@
 #include<iostream>
 #include<fstream>
 #include "backup.cpp"
+#include "command.cpp"
+
 using namespace std;
-int option;
-void main_menu()
+int main()
 {
+    while(1){
+    int option;
+    system("clear");
 
     system("figlet A d m i n  M e n u");
     cout << "\n";
@@ -14,56 +18,60 @@ void main_menu()
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
     cout << "\t4)Backup Files\n\n";
-    cout << "\t5)Exit\n\n\n";
+    cout << "\t5)Know about commands\n\n";
+    cout << "\t6)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
     cin >> option;
-}
-int main()
-{
-    system("clear");    
-    
-    main_menu();
     Server server;
+
     switch (option)
     {
     case 1:
     {
         server.start();
+
         server.menu();
-        main();
         break;
     }
-    
+
     case 2:
     {
         server.stop();
         server.menu();
-        main();
         break;
     }
     case 3:
     {
         server.restart();
         server.menu();
-        main();
         break;
     }
-    
+
     case 4:
     {
         Backup obj;
         obj.bckup();
         server.menu();
-        main();
         break;
     }
     case 5:
+    {
+        string cmd;
+        command obj2;
+        cout << "\tEnter a command : ";
+        cin >> cmd;
+        obj2.cm(cmd);
+        server.menu();
+        break;
+    }
+
+    case 6:
     {
         cout << "\tEXITTED\n";
         return 0;
         break;
     }
-    
+
     default:
     {
         cout << "\tInvalid Option\n";
@@ -71,5 +79,6 @@ int main()
         break;
     }
 }
+    }
     return 0;
 }
