@@ -1,13 +1,11 @@
 #include<iostream>
 #include<fstream>
-#include<unistd.h>
 #include "backup.cpp"
+#include "schedule.cpp"
 using namespace std;
-int main()
+int option;
+void main_menu()
 {
-    while(1){
-    int option;
-    system("clear");
 
     system("figlet A d m i n  M e n u");
     cout << "\n";
@@ -17,18 +15,24 @@ int main()
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
     cout << "\t4)Backup Files\n\n";
-    cout << "\t5)Exit\n\n\n";
+    cout << "\t5)Schedule Server\n\n";
+    cout << "\t6)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
     cin >> option;
+}
+int main()
+{
+    system("clear");    
+    
+    main_menu();
     Server server;
-
     switch (option)
     {
     case 1:
     {
         server.start();
-        
         server.menu();
+        main();
         break;
     }
     
@@ -36,12 +40,14 @@ int main()
     {
         server.stop();
         server.menu();
+        main();
         break;
     }
     case 3:
     {
         server.restart();
         server.menu();
+        main();
         break;
     }
     
@@ -50,9 +56,19 @@ int main()
         Backup obj;
         obj.bckup();
         server.menu();
+        main();
         break;
     }
     case 5:
+    {
+        schedule obj;
+        Server server;
+        obj.schedule_menu();
+        server.menu();
+        main();
+        break;
+    }
+    case 6:
     {
         cout << "\tEXITTED\n";
         return 0;
@@ -66,6 +82,5 @@ int main()
         break;
     }
 }
-    }
     return 0;
 }
