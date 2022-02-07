@@ -2,6 +2,7 @@
 #include<fstream>
 #include "backup.cpp"
 #include "command.cpp"
+#include "schedule.cpp"
 
 using namespace std;
 int main()
@@ -18,8 +19,9 @@ int main()
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
     cout << "\t4)Backup Files\n\n";
-    cout << "\t5)Know about commands\n\n";
-    cout << "\t6)Exit\n\n\n";
+    cout << "\t6)Schedule Server\n\n";
+    cout << "\t7)Know about commands\n\n";
+    cout << "\t8)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
     cin >> option;
     Server server;
@@ -56,6 +58,12 @@ int main()
     }
     case 5:
     {
+        schedule obj;
+        Server server;
+        obj.schedule_menu();
+    }
+    case 6:
+    {
         string cmd;
         command obj2;
         cout << "\tEnter a command : ";
@@ -65,7 +73,7 @@ int main()
         break;
     }
 
-    case 6:
+    case 7:
     {
         cout << "\tEXITTED\n";
         return 0;
