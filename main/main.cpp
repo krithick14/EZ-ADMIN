@@ -1,7 +1,6 @@
 #include<iostream>
 #include<fstream>
 #include "backup.cpp"
-#include "schedule.cpp"
 using namespace std;
 int option;
 void main_menu()
@@ -15,8 +14,7 @@ void main_menu()
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
     cout << "\t4)Backup Files\n\n";
-    cout << "\t5)Schedule Server\n\n";
-    cout << "\t6)Exit\n\n\n";
+    cout << "\t5)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
     cin >> option;
 }
@@ -60,15 +58,6 @@ int main()
         break;
     }
     case 5:
-    {
-        schedule obj;
-        Server server;
-        obj.schedule_menu();
-        server.menu();
-        main();
-        break;
-    }
-    case 6:
     {
         cout << "\tEXITTED\n";
         return 0;
