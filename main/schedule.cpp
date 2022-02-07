@@ -13,7 +13,7 @@ class schedule
             cout << "\t2)Schedule Stop\n\n";
             cout << "\t3)Schedule Restart\n\n";
             cout << "\t4)Remove all Scheduled JOBS\n\n";
-            cout << "\t5)Back\n\n";
+            cout << "\t5)Exit\n\n";
             int opti;
             cout << "\tEnter your choice: ";
             cin >> opti;
@@ -45,7 +45,7 @@ class schedule
             }
             if(opti==5)
             {
-                return;
+                exit(0);
             }
         }
         void schedule_start(string time)
