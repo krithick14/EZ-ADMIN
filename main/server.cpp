@@ -9,7 +9,7 @@ class Server
         int stat;
         Server()
         {
-            stat = system("systemctl status apache2 | grep -i dead >> /dev/null");
+            stat = system("pgrep apache2 >> /dev/null");
         }
 
         void menu()
@@ -31,7 +31,7 @@ class Server
 
         void start()
         {
-            if(status())
+            if(!status())
             {
                 system("sudo service apache2 start");
                 time_t ttime = time(0);
@@ -53,7 +53,7 @@ class Server
 
         void stop()
         {
-            if(!status())
+            if(status())
             {
                 system("sudo service apache2 stop");
                 time_t ttime = time(0);
