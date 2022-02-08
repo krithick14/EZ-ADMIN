@@ -43,7 +43,7 @@ public:
             out_file.open("logs.txt", ios::app);
             out_file << "Server Started by " << getenv("USER") << " on " << time << "\n";
             cout << "\n\tClick the link to View: "
-                 << "http://localhost/";
+                 << "http://localhost/\n\n";
             out_file.close();
         }
         else
@@ -91,7 +91,7 @@ public:
         out_file << "Server Restarted by " << getenv("USER") << " on " << time << "\n";
         cout << "\tServer Restarted Sucessfully\n";
         cout << "\tClick the link to View: "
-             << "http://localhost/";
+             << "http://localhost/\n\n";
         out_file.close();
     }
 };

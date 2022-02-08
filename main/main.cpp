@@ -2,7 +2,6 @@
 #include <fstream>
 #include "server.cpp"
 #include "backup.cpp"
-#include "Util.cpp"
 #include "schedule.cpp"
 using namespace std;
 int main()
@@ -77,7 +76,7 @@ int main()
             file.open("logs.txt");
             string data;
             system("clear");
-            cout << exec("figlet -c L O G S");
+            cout << exec("figlet -c L O G S")<<"\n\n\n\n";
             file.seekg(0, ios::end);
             int file_size = file.tellg();
             if (file_size == 0)
