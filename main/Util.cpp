@@ -67,20 +67,41 @@ public:
     // CLEAR LOGS
     void clearlogs()
     {
-        string temp,pass="abc";
-        cout << "ENTER PASSWORD: ";
-        cin >> temp;
-        if(temp==pass)
-        {    
-            ofstream file;
-            file.open("logs.txt");
-            cout << "\tLogs Cleared Sucessfully\n";
-            file.close();
-        }
-        else
+        int attempt=0;
+        termios oldt;
+        tcgetattr(STDIN_FILENO, &oldt);
+        termios newt = oldt;
+        newt.c_lflag &= ~ECHO;
+        while(attempt != 2)
         {
-            cout << "\t\nInvalid password !!!\n" << endl;
+            string temp="",pass="admin123";
+            cout << "\n\tEnter Password: ";
+            tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+            cin >> temp;
+            if(temp == pass)
+            {    
+                ofstream file;
+                file.open("logs.txt");
+                cout << "\n\n\tLogs Cleared Sucessfully\n";
+                file.close();
+                tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+                break;
+            }
+            else
+            {
+                cout << "\n\n\tInvalid password !!!" << endl;
+                // cout << temp << endl << pass;
+                attempt++;
+                tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+                if(attempt == 2)
+                {
+                    cout << "\n\n\tMAX ATTEMPTS REACHED\n";
+                    exit(1);
+                }
+            }
         }
+        
+        
     }
 
     // HELP MENU
