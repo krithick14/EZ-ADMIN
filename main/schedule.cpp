@@ -1,9 +1,10 @@
 #include <iostream>
-
+#include <fstream>
 using namespace std;
 class schedule
 {
 public:
+    // FUNCTION TO DISPLAY THE SCHEDULE MENU OPTIONS
     void schedule_menu()
     {
         cout << "\t================\n";
@@ -17,67 +18,86 @@ public:
         int opti;
         cout << "\tEnter your choice: ";
         cin >> opti;
+        string time;
         if (opti == 1)
         {
-            string time;
             cout << "\tEnter Start Time in 24 Hours Format (Eg: 10.00) :";
             cin >> time;
+            // START
             schedule_start(time);
         }
         if (opti == 2)
         {
-            string time;
             cout << "\tEnter Stop Time in 24 Hours Format (Eg: 10.00) :";
             cin >> time;
+            // STOP
             schedule_stop(time);
         }
         if (opti == 3)
         {
-            string time;
             cout << "\tEnter Restart Time in 24 Hours Format (Eg: 10.00) :";
             cin >> time;
+            // RESTART
             schedule_restart(time);
         }
         if (opti == 4)
         {
-            cout << "\tAll Scheduled tasks removed\n";
+            // REMOVE ALL SCHEDULED TASKS
             system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
+            cout << "\tAll Scheduled tasks removed\n";
         }
         if (opti == 5)
         {
             exit(0);
         }
     }
+
+    // SCHEDULING START
     void schedule_start(string time)
     {
+        // int time_cpy=stoi(time);
+
         string start_command = "echo 'sudo service apache2 start' | sudo at " + time + " today 2> /dev/null";
+
         fstream out_file;
         out_file.open("logs.txt", ios::app);
         out_file << "Server Start Scheduled by " << getenv("USER") << " at " << time << "\n";
+
         cout << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
+        out_file.close();
     }
 
+
+    // SCHEDULING STOP
     void schedule_stop(string time)
     {
         string start_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
+        
         fstream out_file;
         out_file.open("logs.txt", ios::app);
         out_file << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
+
         cout << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
+        out_file.close();
     }
 
+
+    // SCHEDULING RESTART 
     void schedule_restart(string time)
     {
         string start_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
+
         fstream out_file;
         out_file.open("logs.txt", ios::app);
         out_file << "Server Restart Scheduled by " << getenv("USER") << " at " << time << "\n";
+
         cout << "\t\nServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
+        out_file.close();
     }
 };

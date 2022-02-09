@@ -10,9 +10,11 @@ public:
     int stat;
     Server()
     {
+        // GETTING THE STATUS OF THE SERVER
         stat = system("pgrep apache2 >> /dev/null");
     }
 
+    // FUNCTION TO RETURN TO MENU
     void menu()
     {
         char opt;
@@ -20,17 +22,19 @@ public:
         cin >> opt;
         if (!(opt == 'y' || opt == 'Y'))
             exit(0);
-        
     }
+
+    
+    // FUNCTION TO CHECK STATUS OF SERVER
     bool status()
     {
-
         if (stat == 0)
             return true;
         else
             return false;
     }
 
+    // FUNCTION TO START THE SERVER
     void start()
     {
         if (!status())
@@ -56,6 +60,7 @@ public:
         }
     }
 
+    // FUNCTION TO STOP THE SERVER
     void stop()
     {
         if (status())
@@ -80,6 +85,8 @@ public:
         }
     }
 
+
+    // FUNCTION TO RESTART THE SERVER
     void restart()
     {
         system("sudo service apache2 restart");

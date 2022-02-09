@@ -19,6 +19,8 @@ int main()
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
 
+        // LIST OF OPTIONS
+
         cout << "\n\n\t1)Start Server\n\n";
         cout << "\t2)Stop Server\n\n";
         cout << "\t3)Restart Server\n\n";
@@ -31,25 +33,27 @@ int main()
         cout << "\tEnter Your Option: ";
         cin >> option;
         Server server;
-
+        Util obj;
         switch (option)
         {
         case 1:
         {
+            // STARTING THE SERVER
             server.start();
-
             server.menu();
             break;
         }
 
         case 2:
         {
+            // STOPPING THE SERVER
             server.stop();
             server.menu();
             break;
         }
         case 3:
         {
+            // RESTARTING THE SERVER
             server.restart();
             server.menu();
             break;
@@ -57,6 +61,7 @@ int main()
 
         case 4:
         {
+            // BACKING UP THE SERVER
             Backup obj;
             obj.bckup();
             server.menu();
@@ -64,6 +69,7 @@ int main()
         }
         case 5:
         {
+            // SCHEDULING SERVER FUNCTIONS
             schedule obj;
             Server server;
             obj.schedule_menu();
@@ -72,39 +78,23 @@ int main()
         }
         case 6:
         {
-            ifstream file;
-            file.open("logs.txt");
-            string data;
-            system("clear");
-            cout << exec("figlet -c L O G S")<<"\n\n\n\n";
-            file.seekg(0, ios::end);
-            int file_size = file.tellg();
-            if (file_size == 0)
-            {
-                cout << "\n\n\tNo logs Found";
-            }
-            else
-            {
-                file.seekg(0, ios::beg);
-                while (getline(file, data))
-                    cout << "\t" << data << endl;
-                file.close();
-            }
+            obj.viewlogs();
             server.menu();
             break;
         }
         case 7:
         {
-            ofstream file;
-            file.open("logs.txt");
-            cout << "\tLogs Cleared Sucessfully\n";
-            file.close();
+            // CLEARING LOGS
+
+            obj.clearlogs();
+            
+            server.menu();
             break;
         }
         case 8:
         {
+            // HELP MENU
             string cmd;
-            Util obj;
             cout << "\tEnter a command : ";
             cin >> cmd;
             obj.help(cmd);
@@ -113,6 +103,7 @@ int main()
         }
         case 9:
         {
+            // EXIT
             cout << "\tEXITTED\n";
             return 0;
             break;
@@ -120,6 +111,7 @@ int main()
 
         default:
         {
+            // DEFAULT OPTION FOR INVALID INPUT
             cout << "\tInvalid Option\n";
             server.menu();
             break;
