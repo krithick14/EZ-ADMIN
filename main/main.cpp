@@ -105,6 +105,7 @@ int main()
         case 9:
         {
             // EXIT
+            system("killall xterm  2> /dev/null");
             cout << "\tEXITTED\n";
             return 0;
             break;

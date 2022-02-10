@@ -21,8 +21,10 @@ public:
         char opt;
         cout << "\n\tDo you want to return to the menu (Y/N): ";
         cin >> opt;
-        if (!(opt == 'y' || opt == 'Y'))
+        if (!(opt == 'y' || opt == 'Y')){
+            system("killall xterm  2> /dev/null");
             exit(0);
+        }
     }
 
     
