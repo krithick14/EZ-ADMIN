@@ -11,6 +11,7 @@ public:
     Server()
     {
         // GETTING THE STATUS OF THE SERVER
+       
         stat = system("pgrep apache2 >> /dev/null");
     }
 
@@ -40,7 +41,7 @@ public:
         if (!status())
         {
             system("sudo service apache2 start");
-
+            system("killall xterm  2> /dev/null");
             system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
@@ -93,6 +94,7 @@ public:
     // FUNCTION TO RESTART THE SERVER
     void restart()
     {
+        system("killall xterm  2> /dev/null");
         system("sudo service apache2 restart");
         system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
         time_t ttime = time(0);
