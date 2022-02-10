@@ -14,7 +14,7 @@ int main()
         cout << exec("figlet -c Admin Menu");
         cout << "\n";
         system("sudo echo admin > /dev/null");
-        cout << exec("systemctl status apache2 | grep -i Active ") << "\n";
+        cout << exec("systemctl status apache2 | grep -i Active") << "\n";
         cout << "\n";
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
@@ -26,8 +26,8 @@ int main()
         cout << "\t3)Restart Server\n\n";
         cout << "\t4)Backup Files\n\n";
         cout << "\t5)Schedule Server\n\n";
-        cout << "\t6)View Logs\n\n";
-        cout << "\t7)Clear Logs\n\n";
+        cout << "\t6)View Server Logs\n\n";
+        cout << "\t7)Clear Server Logs\n\n";
         cout << "\t8)Know about commands\n\n";
         cout << "\t9)Exit\n\n\n";
         cout << "\tEnter Your Option: ";

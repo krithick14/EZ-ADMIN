@@ -40,14 +40,16 @@ public:
         if (!status())
         {
             system("sudo service apache2 start");
+
+            system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
             cout << "\n\tServer Started by " << getenv("USER") << " on " << time << "\n\n";
             fstream out_file;
-            out_file.open("logs.txt", ios::app);
+            out_file.open("server_logs.txt", ios::app);
             out_file << "Server Started by " << getenv("USER") << " on " << time << "\n";
             cout << "\n\tClick the link to View: "
-                 << "http://localhost/\n\n";
+                 << "http://127.0.0.1/\n\n";
             out_file.close();
         }
         else
@@ -66,11 +68,13 @@ public:
         if (status())
         {
             system("sudo service apache2 stop");
+            
+            system("killall xterm  2> /dev/null");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
             cout << "\n\tServer Stopped by " << getenv("USER") << " on " << time << "\n";
             fstream out_file;
-            out_file.open("logs.txt", ios::app);
+            out_file.open("server_logs.txt", ios::app);
             out_file << "Server Stopped by " << getenv("USER") << " on " << time << "\n";
             cout << "\tServer Stopped\n";
             out_file.close();
@@ -90,15 +94,16 @@ public:
     void restart()
     {
         system("sudo service apache2 restart");
+        system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
         time_t ttime = time(0);
         char *time = ctime(&ttime);
         cout << "\n\tServer Restarted by " << getenv("USER") << " on " << time << "\n\n";
         fstream out_file;
-        out_file.open("logs.txt", ios::app);
+        out_file.open("server_logs.txt", ios::app);
         out_file << "Server Restarted by " << getenv("USER") << " on " << time << "\n";
         cout << "\tServer Restarted Sucessfully\n";
         cout << "\tClick the link to View: "
-             << "http://localhost/\n\n";
+             << "http://127.0.0.1/\n\n";
         out_file.close();
     }
 };

@@ -45,7 +45,7 @@ public:
     // VIEW LOGS
     void viewlogs(){
             ifstream file;
-            file.open("logs.txt");
+            file.open("server_logs.txt");
             string data;
             system("clear");
             cout << exec("figlet -c L O G S") << "\n\n\n\n";
@@ -81,7 +81,7 @@ public:
             if(temp == pass)
             {    
                 ofstream file;
-                file.open("logs.txt");
+                file.open("server_logs.txt");
                 cout << "\n\n\tLogs Cleared Sucessfully\n";
                 file.close();
                 tcsetattr(STDIN_FILENO, TCSANOW, &oldt);

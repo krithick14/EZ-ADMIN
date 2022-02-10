@@ -60,10 +60,10 @@ public:
         string start_command = "echo 'sudo service apache2 start' | sudo at " + time + " today 2> /dev/null";
 
         fstream out_file;
-        out_file.open("logs.txt", ios::app);
+        out_file.open("server_logs.txt", ios::app);
         out_file << "Server Start Scheduled by " << getenv("USER") << " at " << time << "\n";
 
-        cout << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
+        cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
         out_file.close();
@@ -76,10 +76,10 @@ public:
         string start_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
         
         fstream out_file;
-        out_file.open("logs.txt", ios::app);
+        out_file.open("server_logs.txt", ios::app);
         out_file << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
 
-        cout << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
+        cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
         out_file.close();
@@ -92,10 +92,10 @@ public:
         string start_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
 
         fstream out_file;
-        out_file.open("logs.txt", ios::app);
+        out_file.open("server_logs.txt", ios::app);
         out_file << "Server Restart Scheduled by " << getenv("USER") << " at " << time << "\n";
 
-        cout << "\t\nServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
+        cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << "\n";
         const char *command = start_command.c_str();
         system(command);
         out_file.close();
