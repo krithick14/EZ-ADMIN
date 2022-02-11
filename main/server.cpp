@@ -44,7 +44,7 @@ public:
         {
             system("sudo service apache2 start");
             system("killall xterm  2> /dev/null");
-            system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
+            system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"cut -d \' \'  -f 1,4,5 /var/log/apache2/access.log | tr -s ' ' '\t'  \" & ");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
             cout << "\n\tServer Started by " << getenv("USER") << " on " << time << "\n\n";

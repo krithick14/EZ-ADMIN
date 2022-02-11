@@ -5,14 +5,6 @@
 #include <cstdio>
 #include <fstream>
 using namespace std;  
-inline bool exist(const std::string& name)
-{
-    ifstream file(name);
-    if(!file)            // If the file was not found, then file is 0, i.e. !file=1 or true.
-        return false;    // The file was not found.
-    else                 // If the file was found, then file is non-0.
-        return true;     // The file was found.
-}
 
 // FUNCTION TO EXECUTE SYSTEM COMMANDS AND RETURN THE OUTPUT OF THE COMMAND
 
@@ -37,28 +29,7 @@ string exec(string command)
     pclose(pipe);
     return result;
 }
-// CREATE CLIENT_LOG.SH
-    void create_client_log()
-    {
-        if(exist("client_log.sh")==0)
-        {
-            ofstream file;
-            file.open("client_log.sh");
-            file << "#!/bin/bash" << endl;
-            file << "while [ true ]" << endl;
-            file << "do" << endl;
-            file << "clear "<<endl;
-            file << "awk '{print $1 ";
-            file << "\"\\t\"";
-            file << " $4";
-            file << "\"]\"";
-            file << "}' /var/log/apache2/access.log;";
-            file << "sleep 2;done";
-            file.close();
-            system("sudo chmod +x client_log.sh");
-        }
-        system("sudo chmod +x client_log.sh");
-    }
+
 class Util
 {
 public:

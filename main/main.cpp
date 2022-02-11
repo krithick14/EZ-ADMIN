@@ -39,7 +39,6 @@ int main()
         case 1:
         {
             // STARTING THE SERVER
-            create_client_log();
             server.start();
             server.menu();
             break;
