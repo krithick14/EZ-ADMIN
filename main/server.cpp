@@ -11,7 +11,7 @@ public:
     Server()
     {
         // GETTING THE STATUS OF THE SERVER
-       
+
         stat = system("pgrep apache2 >> /dev/null");
     }
 
@@ -21,13 +21,13 @@ public:
         char opt;
         cout << "\n\tDo you want to return to the menu (Y/N): ";
         cin >> opt;
-        if (!(opt == 'y' || opt == 'Y')){
+        if (!(opt == 'y' || opt == 'Y'))
+        {
             system("killall xterm  2> /dev/null");
             exit(0);
         }
     }
 
-    
     // FUNCTION TO CHECK STATUS OF SERVER
     bool status()
     {
@@ -71,7 +71,7 @@ public:
         if (status())
         {
             system("sudo service apache2 stop");
-            
+
             system("killall xterm  2> /dev/null");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
@@ -91,7 +91,6 @@ public:
                 start();
         }
     }
-
 
     // FUNCTION TO RESTART THE SERVER
     void restart()

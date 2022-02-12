@@ -69,12 +69,11 @@ public:
         out_file.close();
     }
 
-
     // SCHEDULING STOP
     void schedule_stop(string time)
     {
         string start_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
-        
+
         fstream out_file;
         out_file.open("server_logs.txt", ios::app);
         out_file << "Server Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
@@ -85,8 +84,7 @@ public:
         out_file.close();
     }
 
-
-    // SCHEDULING RESTART 
+    // SCHEDULING RESTART
     void schedule_restart(string time)
     {
         string start_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";

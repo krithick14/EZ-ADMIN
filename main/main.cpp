@@ -87,7 +87,7 @@ int main()
             // CLEARING LOGS
 
             obj.clearlogs();
-            
+
             server.menu();
             break;
         }

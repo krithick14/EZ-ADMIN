@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <cstdio>
 #include <fstream>
-using namespace std;  
+using namespace std;
 
 // FUNCTION TO EXECUTE SYSTEM COMMANDS AND RETURN THE OUTPUT OF THE COMMAND
 
@@ -33,45 +33,45 @@ string exec(string command)
 class Util
 {
 public:
-    
     // VIEW LOGS
-    void viewlogs(){
-            ifstream file;
-            file.open("server_logs.txt");
-            string data;
-            system("clear");
-            cout << exec("figlet -c L O G S") << "\n\n\n\n";
-            file.seekg(0, ios::end);
-            int file_size = file.tellg();
-            if (file_size == 0)
-            {
-                cout << "\n\n\tNo logs Found";
-            }
-            else
-            {
-                file.seekg(0, ios::beg);
-                while (getline(file, data))
-                    cout << "\t" << data << endl;
-                file.close();
-            }
+    void viewlogs()
+    {
+        ifstream file;
+        file.open("server_logs.txt");
+        string data;
+        system("clear");
+        cout << exec("figlet -c L O G S") << "\n\n\n\n";
+        file.seekg(0, ios::end);
+        int file_size = file.tellg();
+        if (file_size == 0)
+        {
+            cout << "\n\n\tNo logs Found";
+        }
+        else
+        {
+            file.seekg(0, ios::beg);
+            while (getline(file, data))
+                cout << "\t" << data << endl;
+            file.close();
+        }
     }
 
     // CLEAR LOGS
     void clearlogs()
     {
-        int attempt=0;
+        int attempt = 0;
         termios oldt;
         tcgetattr(STDIN_FILENO, &oldt);
         termios newt = oldt;
         newt.c_lflag &= ~ECHO;
-        while(attempt != 2)
+        while (attempt != 2)
         {
-            string temp="",pass="admin123";
+            string temp = "", pass = "admin123";
             cout << "\n\tEnter Password: ";
             tcsetattr(STDIN_FILENO, TCSANOW, &newt);
             cin >> temp;
-            if(temp == pass)
-            {    
+            if (temp == pass)
+            {
                 ofstream file;
                 file.open("server_logs.txt");
                 cout << "\n\n\tLogs Cleared Sucessfully\n";
@@ -85,15 +85,13 @@ public:
                 // cout << temp << endl << pass;
                 attempt++;
                 tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-                if(attempt == 2)
+                if (attempt == 2)
                 {
                     cout << "\n\n\tMAX ATTEMPTS REACHED\n";
                     exit(1);
                 }
             }
         }
-        
-        
     }
 
     // HELP MENU
