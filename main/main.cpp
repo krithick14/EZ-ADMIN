@@ -28,8 +28,9 @@ int main()
         cout << "\t5)Schedule Server\n\n";
         cout << "\t6)View Server Logs\n\n";
         cout << "\t7)Clear Server Logs\n\n";
-        cout << "\t8)Know about commands\n\n";
-        cout << "\t9)Exit\n\n\n";
+        cout << "\t8)Search logs using IP Address\n\n";
+        cout << "\t9)Know about commands\n\n";
+        cout << "\t10)Exit\n\n\n";
         cout << "\tEnter Your Option: ";
         cin >> option;
         Server server;
@@ -93,19 +94,30 @@ int main()
         }
         case 8:
         {
-            // HELP MENU
-            string cmd;
-            cout << "\tEnter a command : ";
-            cin >> cmd;
-            obj.help(cmd);
+            // SEARCH LOGS USING IP ADDRESS
+            search s;
+            string ip;
+            cout << "\n\tEnter an IP Address: ";
+            cin >> ip;
+            s.search_with_ip(ip);
             server.menu();
             break;
         }
         case 9:
         {
+            // HELP MENU
+            string cmd;
+            cout << "\n\tEnter a command : ";
+            cin >> cmd;
+            obj.help(cmd);
+            server.menu();
+            break;
+        }
+        case 10:
+        {
             // EXIT
             system("killall xterm  2> /dev/null");
-            cout << "\tEXITTED\n";
+            cout << "\tEXITED\n\n";
             return 0;
             break;
         }

@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <cstdio>
 #include <fstream>
+
 using namespace std;
 
 // FUNCTION TO EXECUTE SYSTEM COMMANDS AND RETURN THE OUTPUT OF THE COMMAND
@@ -97,8 +98,16 @@ public:
     // HELP MENU
     void help(string cmd)
     {
-        string full_cmd = "man " + cmd;
+        string full_cmd = cmd + " --version 1> /dev/null 2> /dev/null";
         const char *full = full_cmd.c_str();
-        system(full);
+        int x = system(full);
+        if (x != 0)
+        {
+            cout << "\n\t" << cmd << " - Command not found\n";
+            return;
+        }
+        string x1 = "man " + cmd;
+        const char* y = x1.c_str();
+        system(y);
     }
 };

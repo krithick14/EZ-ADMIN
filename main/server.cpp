@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
 #include <ctime>
 #include <fstream>
 using namespace std;
@@ -18,12 +19,16 @@ public:
     // FUNCTION TO RETURN TO MENU
     void menu()
     {
-        char opt;
+        string opt;
         cout << "\n\tDo you want to return to the menu (Y/N): ";
-        cin >> opt;
-        if (!(opt == 'y' || opt == 'Y'))
+        cin.ignore();
+        getline(cin,opt);
+        if (opt.length()==0)
+            return;
+        if (!(opt == "Y" || opt == "y" ))
         {
             system("killall xterm  2> /dev/null");
+            cout<<"\n\t EXITED\n";
             exit(0);
         }
     }
@@ -97,7 +102,7 @@ public:
     {
         system("killall xterm  2> /dev/null");
         system("sudo service apache2 restart");
-        system("xterm -fa 'Monospace' -fs 10 -T Client_logs ./client_log.sh &");
+        system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"cut -d \' \'  -f 1,4,5 /var/log/apache2/access.log | tr -s ' ' '\t'  \" & ");
         time_t ttime = time(0);
         char *time = ctime(&ttime);
         cout << "\n\tServer Restarted by " << getenv("USER") << " on " << time << "\n\n";

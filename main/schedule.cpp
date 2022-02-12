@@ -7,9 +7,10 @@ public:
     // FUNCTION TO DISPLAY THE SCHEDULE MENU OPTIONS
     void schedule_menu()
     {
-        cout << "\t================\n";
-        cout << "\t SCHEDULE MENU\n";
-        cout << "\t================\n";
+        // cout << "\t================\n";
+        // cout << "\t SCHEDULE MENU\n";
+        // cout << "\t================\n";
+        cout << exec("figlet -c Schedule Menu");
         cout << "\t1)Schedule Start\n\n";
         cout << "\t2)Schedule Stop\n\n";
         cout << "\t3)Schedule Restart\n\n";
