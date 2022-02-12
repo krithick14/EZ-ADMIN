@@ -28,13 +28,19 @@ int main()
         cout << "\t5)Schedule Server\n\n";
         cout << "\t6)View Server Logs\n\n";
         cout << "\t7)Clear Server Logs\n\n";
-        cout << "\t8)Search logs using IP Address\n\n";
-        cout << "\t9)Know about commands\n\n";
-        cout << "\t10)Exit\n\n\n";
+        cout << "\t8)Search Client logs using IP Address\n\n";
+        cout << "\t9)Search Client logs using Date\n\n";
+        cout << "\t10)Know about commands\n\n";
+        cout << "\t11)Exit\n\n\n";
         cout << "\tEnter Your Option: ";
         cin >> option;
+
         Server server;
-        Util obj;
+        Util util;
+        Search search;
+        Backup backup;
+        Schedule schedule;
+
         switch (option)
         {
         case 1:
@@ -63,23 +69,21 @@ int main()
         case 4:
         {
             // BACKING UP THE SERVER
-            Backup obj;
-            obj.bckup();
+            backup.bckup();
             server.menu();
             break;
         }
         case 5:
         {
             // SCHEDULING SERVER FUNCTIONS
-            schedule obj;
-            Server server;
-            obj.schedule_menu();
+
+            schedule.schedule_menu();
             server.menu();
             break;
         }
         case 6:
         {
-            obj.viewlogs();
+            util.viewlogs();
             server.menu();
             break;
         }
@@ -87,7 +91,7 @@ int main()
         {
             // CLEARING LOGS
 
-            obj.clearlogs();
+            util.clearlogs();
 
             server.menu();
             break;
@@ -95,25 +99,35 @@ int main()
         case 8:
         {
             // SEARCH LOGS USING IP ADDRESS
-            search s;
+            
             string ip;
             cout << "\n\tEnter an IP Address: ";
             cin >> ip;
-            s.search_with_ip(ip);
+            search.search_with_ip(ip);
             server.menu();
             break;
         }
         case 9:
         {
-            // HELP MENU
-            string cmd;
-            cout << "\n\tEnter a command : ";
-            cin >> cmd;
-            obj.help(cmd);
+            // SEARCH LOGS USING DATE
+            string date;
+            cout << "\n\tEnter date in 01/Jan/2022 format : ";
+            cin >> date;
+            search.search_with_date(date);
             server.menu();
             break;
         }
         case 10:
+        {
+            // HELP MENU
+            string cmd;
+            cout << "\n\tEnter a command : ";
+            cin >> cmd;
+            util.help(cmd);
+            server.menu();
+            break;
+        }
+        case 11:
         {
             // EXIT
             system("killall xterm  2> /dev/null");

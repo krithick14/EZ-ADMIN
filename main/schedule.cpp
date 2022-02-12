@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-class schedule
+class Schedule
 {
 public:
     // FUNCTION TO DISPLAY THE SCHEDULE MENU OPTIONS

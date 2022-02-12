@@ -75,9 +75,8 @@ public:
     {
         if (status())
         {
-            system("sudo service apache2 stop");
-
             system("killall xterm  2> /dev/null");
+            system("sudo service apache2 stop");
             time_t ttime = time(0);
             char *time = ctime(&ttime);
             cout << "\n\tServer Stopped by " << getenv("USER") << " on " << time << "\n";
