@@ -35,23 +35,6 @@ public:
         out_file.close();
     }
 
-    // FUNCTION TO RETURN TO MENU
-    void menu()
-    {
-        string opt;
-        cout << "\n\tDo you want to return to the menu (Y/N): ";
-        cin.ignore();
-        getline(cin, opt);
-        if (opt.length() == 0)
-            return;
-        if (!(opt == "Y" || opt == "y"))
-        {
-            system("killall xterm  2> /dev/null");
-            cout << "\n\tEXITED\n";
-            exit(0);
-        }
-    }
-
     // FUNCTION TO CHECK STATUS OF SERVER
     bool status()
     {

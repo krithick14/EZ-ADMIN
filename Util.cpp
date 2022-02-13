@@ -58,7 +58,7 @@ public:
         file.open("server_logs.txt");
         string data;
         system("clear");
-        cout << exec("figlet -c L O G S") << "\n\n\n\n";
+        cout << exec("figlet -c -w 100 S E R V E R - L O G S") << "\n\n\n\n";
         file.seekg(0, ios::end);
         int file_size = file.tellg();
         if (file_size == 0)

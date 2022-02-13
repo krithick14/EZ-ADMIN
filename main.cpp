@@ -4,12 +4,47 @@
 #include "Backup.cpp"
 #include "Schedule.cpp"
 using namespace std;
+
+// FUNCTION TO CONFIRM EXIT
+void confirm_exit()
+{
+    string opt;
+    cout << "\n\tDo you want to return to the menu (Y/N): ";
+    cin.ignore();
+    getline(cin, opt);
+    if (opt.length() == 0)
+        return;
+    if (!(opt == "Y" || opt == "y"))
+    {
+        system("killall xterm  2> /dev/null");
+        cout << "\n\tEXITED\n";
+        exit(0);
+    }
+}
+
+//DISPLAY MENU
+void menu()
+{
+
+    cout << "\n\n\t1)Start Server\n\n";
+    cout << "\t2)Stop Server\n\n";
+    cout << "\t3)Restart Server\n\n";
+    cout << "\t4)Backup Files\n\n";
+    cout << "\t5)Schedule Server\n\n";
+    cout << "\t6)View Server Logs\n\n";
+    cout << "\t7)Clear Server Logs\n\n";
+    cout << "\t8)Search Client logs using IP Address\n\n";
+    cout << "\t9)Search Client logs using Time\n\n";
+    cout << "\t10)Know about commands\n\n";
+    cout << "\t11)Exit\n\n\n";
+    cout << "\tEnter Your Option: ";
+}
 int main()
 {
     system("clear");
     while (1)
     {
-        int option = 0;
+        int option;
 
         cout << exec("figlet -c Admin Menu");
         cout << "\n";
@@ -18,21 +53,7 @@ int main()
         cout << "\n";
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
-
-        // LIST OF OPTIONS
-
-        cout << "\n\n\t1)Start Server\n\n";
-        cout << "\t2)Stop Server\n\n";
-        cout << "\t3)Restart Server\n\n";
-        cout << "\t4)Backup Files\n\n";
-        cout << "\t5)Schedule Server\n\n";
-        cout << "\t6)View Server Logs\n\n";
-        cout << "\t7)Clear Server Logs\n\n";
-        cout << "\t8)Search Client logs using IP Address\n\n";
-        cout << "\t9)Search Client logs using Time\n\n";
-        cout << "\t10)Know about commands\n\n";
-        cout << "\t11)Exit\n\n\n";
-        cout << "\tEnter Your Option: ";
+        menu();
         cin >> option;
 
         Server server;
@@ -47,7 +68,7 @@ int main()
         {
             // STARTING THE SERVER
             server.start();
-            server.menu();
+            confirm_exit();
             break;
         }
 
@@ -55,14 +76,14 @@ int main()
         {
             // STOPPING THE SERVER
             server.stop();
-            server.menu();
+            confirm_exit();
             break;
         }
         case 3:
         {
             // RESTARTING THE SERVER
             server.restart();
-            server.menu();
+            confirm_exit();
             break;
         }
 
@@ -70,7 +91,7 @@ int main()
         {
             // BACKING UP THE SERVER
             backup.bckup();
-            server.menu();
+            confirm_exit();
             break;
         }
         case 5:
@@ -78,13 +99,13 @@ int main()
             // SCHEDULING SERVER FUNCTIONS
 
             schedule.schedule_menu();
-            server.menu();
+            confirm_exit();
             break;
         }
         case 6:
         {
             util.viewlogs();
-            server.menu();
+            confirm_exit();
             break;
         }
         case 7:
@@ -92,8 +113,7 @@ int main()
             // CLEARING LOGS
 
             util.clearlogs();
-
-            server.menu();
+            confirm_exit();
             break;
         }
         case 8:
@@ -104,7 +124,7 @@ int main()
             cout << "\n\tEnter an IP Address: ";
             cin >> ip;
             search.search_with_ip(ip);
-            server.menu();
+            confirm_exit();
             break;
         }
         case 9:
@@ -112,7 +132,7 @@ int main()
             // SEARCH LOGS USING DATE/MONTH
 
             search.search_menu();
-            server.menu();
+            confirm_exit();
             break;
         }
         case 10:
@@ -122,7 +142,7 @@ int main()
             cout << "\n\tEnter a command : ";
             cin >> cmd;
             util.help(cmd);
-            server.menu();
+            confirm_exit();
             break;
         }
         case 11:
@@ -138,7 +158,7 @@ int main()
         {
             // DEFAULT OPTION FOR INVALID INPUT
             cout << "\tInvalid Option\n";
-            server.menu();
+            menu();
             break;
         }
         }
