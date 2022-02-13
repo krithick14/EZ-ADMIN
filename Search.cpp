@@ -34,6 +34,7 @@ public:
             return;
         }
     }
+
     // FUNCTION TO VALIDATE IP ADDRESSES
     bool is_ip_address(const string &str)
     {
@@ -72,14 +73,13 @@ public:
 
             const char *exe_command = command.c_str();
             n = exec(command + " | wc -l");
-            int num = stoi(n);
-            if (num == 0)
+            if (stoi(n) == 0)
             {
-                cout << "\n\tNo connections found with " << ip << "!!!\n";
+                cout << "\n\tNo connections found with " << ip << "  !!!\n";
             }
             else
             {
-                cout << "\n\t" << ip << " has connected with the server\n\tNumber of connections = " << num << "\n\n\tDetails of connections \n";
+                cout << "\n\t" << ip << " has connected with the server\n\tNumber of connections = " << n << "\n\n\tDetails of connections \n";
                 system("printf \"\\tS.no\\tIP\\t\\tTime Stamp\\n\" ");
                 system(exe_command);
             }
@@ -99,8 +99,7 @@ public:
             string command = "cat /var/log/apache2/access.log | grep " + date + " | awk \'{print \"\\t\" NR \"\\t\"$1 \"\\t\" $4 \" \" $5 }\' ";
             const char *exe_command = command.c_str();
             n = exec(command + " | wc -l");
-            int num = stoi(n);
-            if (num == 0)
+            if (stoi(n) == 0)
             {
                 cout << "\n\tNo Logs found on date " << date << " !!!\n";
             }
@@ -133,8 +132,7 @@ public:
             string command = "cat /var/log/apache2/access.log | grep " + month + " | awk \'{print \"\\t\" NR \"\\t\"$1 \"\\t\" $4 \" \" $5 }\' ";
             const char *exe_command = command.c_str();
             n = exec(command + " | wc -l");
-            int num = stoi(n);
-            if (num == 0)
+            if (stoi(n) == 0)
             {
                 cout << "\n\tNo Logs found on " << month << " !!!\n";
             }

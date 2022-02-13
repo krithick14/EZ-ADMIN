@@ -9,12 +9,12 @@ int main()
     system("clear");
     while (1)
     {
-        int option=0;
+        int option = 0;
 
         cout << exec("figlet -c Admin Menu");
         cout << "\n";
         system("sudo echo admin > /dev/null");
-        cout << exec("systemctl status apache2 | grep -i Active") << "\n";
+        cout << "\tStatus:" << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 6 --complement") << "\n";
         cout << "\n";
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
@@ -110,7 +110,7 @@ int main()
         case 9:
         {
             // SEARCH LOGS USING DATE/MONTH
-            
+
             search.search_menu();
             server.menu();
             break;

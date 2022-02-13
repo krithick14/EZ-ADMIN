@@ -4,30 +4,37 @@
 #include <ctime>
 #include <fstream>
 using namespace std;
-fstream out_file;
 
 class Server
 {
+    fstream out_file;
     time_t ttime;
     char *now;
 
 public:
     int stat;
 
+    // CONSTRUCTOR
     Server()
     {
+        // Get Time
         ttime = time(0);
         now = ctime(&ttime);
+
+        // File Open
         out_file.open("server_logs.txt", ios::app);
 
         // GETTING THE STATUS OF THE SERVER
         stat = system("pgrep apache2 >> /dev/null");
     }
 
+    // DESTRUCTOR
     ~Server()
     {
+        // File Close
         out_file.close();
     }
+
     // FUNCTION TO RETURN TO MENU
     void menu()
     {

@@ -9,20 +9,23 @@ class Schedule
 public:
     int opti;
 
+    // Constructor
     Schedule()
     {
+        // File Open
         out_file.open("server_logs.txt", ios::app);
     }
+
+    // Destructor
     ~Schedule()
     {
         out_file.close();
     }
+
+
     // FUNCTION TO DISPLAY THE SCHEDULE MENU OPTIONS
     void schedule_menu()
     {
-        // cout << "\t================\n";
-        // cout << "\t SCHEDULE MENU\n";
-        // cout << "\t================\n";
 
         system("figlet -c Schedule Menu");
 
@@ -40,6 +43,7 @@ public:
         {
             cout << "\tEnter Start Time in 24 Hours Format (Eg: 18.30) :";
             cin >> time;
+
             // START
             schedule_start(time);
         }
@@ -47,6 +51,7 @@ public:
         {
             cout << "\tEnter Stop Time in 24 Hours Format (Eg: 10.00) :";
             cin >> time;
+
             // STOP
             schedule_stop(time);
         }
@@ -54,6 +59,7 @@ public:
         {
             cout << "\tEnter Restart Time in 24 Hours Format (Eg: 10.00) :";
             cin >> time;
+
             // RESTART
             schedule_restart(time);
         }
@@ -73,6 +79,7 @@ public:
             exit(0);
         }
     }
+
 
     // SCHEDULING START
     void schedule_start(string time)
