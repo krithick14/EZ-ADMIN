@@ -39,6 +39,8 @@ void menu()
     cout << "\t11)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
 }
+
+// MAIN FUNCTION
 int main()
 {
     system("clear");
@@ -46,7 +48,7 @@ int main()
     {
         int option;
 
-        cout << exec("figlet -c Admin Menu");
+        system("figlet -c Admin Menu");
         cout << "\n";
         system("sudo echo admin > /dev/null");
         cout << "\tStatus:" << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 6 --complement") << "\n";
@@ -157,8 +159,8 @@ int main()
         default:
         {
             // DEFAULT OPTION FOR INVALID INPUT
-            cout << "\tInvalid Option\n";
-            menu();
+            cout << "\n\tInvalid Option\n\n";
+            exit(1);
             break;
         }
         }

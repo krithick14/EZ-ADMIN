@@ -13,7 +13,7 @@ public:
     Schedule()
     {
         // File Open
-        out_file.open("server_logs.txt", ios::app);
+        out_file.open(".server_logs.txt", ios::app);
     }
 
     // Destructor
@@ -88,32 +88,28 @@ public:
 
         out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
         cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
-
-        const char *command = start_command.c_str();
-        system(command);
+        system(start_command.c_str());
     }
 
     // SCHEDULING STOP
     void schedule_stop(string time)
     {
-        string start_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
+        string stop_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
 
         out_file << "\nServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n\n";
         cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
 
-        const char *command = start_command.c_str();
-        system(command);
+        system(stop_command.c_str());
     }
 
     // SCHEDULING RESTART
     void schedule_restart(string time)
     {
-        string start_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
+        string restart_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
 
         out_file << "\nServer Restart Scheduled by " << getenv("USER") << " at " << time << "\n\n";
         cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << "\n";
 
-        const char *command = start_command.c_str();
-        system(command);
+        system(restart_command.c_str());
     }
 };

@@ -22,7 +22,7 @@ public:
         now = ctime(&ttime);
 
         // File Open
-        out_file.open("server_logs.txt", ios::app);
+        out_file.open(".server_logs.txt", ios::app);
 
         // GETTING THE STATUS OF THE SERVER
         stat = system("pgrep apache2 >> /dev/null");

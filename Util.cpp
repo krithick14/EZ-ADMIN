@@ -30,7 +30,9 @@ string exec(string command)
     pclose(pipe);
     return result;
 }
-string *splitString(string str)
+
+// FUNCTION TO SPLIT DATE USING '/'
+string *splitDate(string str)
 {
     string *arr = new string[25];
     int i = 0;
@@ -48,6 +50,7 @@ string *splitString(string str)
     }
     return arr;
 }
+
 class Util
 {
 public:
@@ -55,7 +58,7 @@ public:
     void viewlogs()
     {
         ifstream file;
-        file.open("server_logs.txt");
+        file.open(".server_logs.txt");
         string data;
         system("clear");
         cout << exec("figlet -c -w 100 S E R V E R - L O G S") << "\n\n\n\n";
@@ -100,7 +103,6 @@ public:
             else
             {
                 cout << "\n\n\tInvalid password !!!" << endl;
-                // cout << temp << endl << pass;
                 attempt++;
                 tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
                 if (attempt == 2)
@@ -116,15 +118,13 @@ public:
     void help(string cmd)
     {
         string full_cmd = cmd + " --version 1> /dev/null 2> /dev/null";
-        const char *full = full_cmd.c_str();
-        int x = system(full);
-        if (x != 0)
+        int exit_code = system(full_cmd.c_str());
+        if (exit_code != 0)
         {
             cout << "\n\t" << cmd << " - Command not found\n";
             return;
         }
-        string x1 = "man " + cmd;
-        const char *y = x1.c_str();
-        system(y);
+        string command = "man " + cmd;
+        system(command.c_str());
     }
 };
