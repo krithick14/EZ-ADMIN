@@ -124,7 +124,7 @@ public:
             return;
         }
         string x1 = "man " + cmd;
-        const char* y = x1.c_str();
+        const char *y = x1.c_str();
         system(y);
     }
 };
