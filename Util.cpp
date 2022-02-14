@@ -94,7 +94,7 @@ public:
             if (temp == pass)
             {
                 ofstream file;
-                file.open("server_logs.txt");
+                file.open(".server_logs.txt");
                 cout << "\n\n\tLogs Cleared Sucessfully\n";
                 file.close();
                 tcsetattr(STDIN_FILENO, TCSANOW, &oldt);

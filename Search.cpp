@@ -52,7 +52,7 @@ public:
         string *s = splitDate(date);
         const string months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-        if ((stoi(s[0]) > 0 || stoi(s[0]) < 31))
+        if ((stoi(s[0]) > 0 && stoi(s[0]) < 31))
         {
             for (int i = 0; i < 12; i++)
             {
@@ -115,7 +115,7 @@ public:
         }
         else
         {
-            cout << "\n\tInvalid Date";
+            cout << "\n\n\tInvalid Date\n";
         }
     }
 
