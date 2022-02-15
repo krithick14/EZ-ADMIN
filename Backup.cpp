@@ -22,7 +22,7 @@ public:
 
         if (choice == 'y' || choice == 'Y')
         {
-            system("nautilus /home/$USER/backup_server &");
+            system("caja /home/$USER/backup_server &");
         }
         else
         {

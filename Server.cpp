@@ -49,9 +49,23 @@ public:
     {
         if (!status())
         {
-            system("sudo service apache2 start");
+            try
+            {
+                int exit_code = system("sudo service apache2 start 2> /dev/null");
+                if (exit_code != 0)
+                    throw "Server Start failed - ";
+            }
+            catch (const char *err)
+            {
+
+                cout << "\n\tERROR !!!" << endl;
+                cout << "\n\t" << err << getenv("USER") << " - " << now << "\n\n";
+                out_file << err << getenv("USER") << " - " << now << "\n";
+
+                return;
+            }
             system("killall xterm  2> /dev/null");
-            system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"tail /var/log/apache2/access.log | cut -d \' \'  -f 1,4,5  | tr -s ' ' '\t'  \" & ");
+            system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"tail -n 15 /var/log/apache2/access.log | cut -d \' \'  -f 1,4,5  | tr -s ' ' '\t'  \" & ");
 
             cout << "\n\tServer Started by " << getenv("USER") << " on " << now << "\n\n";
             out_file << "Server Started by " << getenv("USER") << " on " << now << "\n";
@@ -74,7 +88,22 @@ public:
         if (status())
         {
             system("killall xterm  2> /dev/null");
-            system("sudo service apache2 stop");
+            try
+            {
+                int exit_code = system("sudo service apache2 stop 2> /dev/null");
+                if (exit_code != 0)
+                    throw "Server Stop failed - ";
+            }
+            catch (const char *err)
+            {
+
+                cout << "\n\tERROR !!!" << endl;
+                cout << "\n\t" << err << getenv("USER") << " - " << now << "\n\n";
+                out_file << err << getenv("USER") << " - " << now << "\n";
+
+                return;
+            }
+
             cout << "\n\tServer Stopped by " << getenv("USER") << " on " << now << "\n";
             out_file << "Server Stopped by " << getenv("USER") << " on " << now << "\n";
             cout << "\tServer Stopped\n";
@@ -93,7 +122,22 @@ public:
     void restart()
     {
         system("killall xterm  2> /dev/null");
-        system("sudo service apache2 restart");
+
+        try
+        {
+            int exit_code = system("sudo service apache2 restart 2> /dev/null");
+            if (exit_code != 0)
+                throw "Server Restart failed - ";
+        }
+        catch (const char *err)
+        {
+
+            cout << "\n\tERROR !!!" << endl;
+            cout << "\n\t" << err << getenv("USER") << " - " << now << "\n\n";
+            out_file << err << getenv("USER") << " - " << now << "\n";
+
+            return;
+        }
         system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"tail /var/log/apache2/access.log | cut -d \' \'  -f 1,4,5  | tr -s ' ' '\t'  \" & ");
 
         out_file << "Server Restarted by " << getenv("USER") << " on " << now << "\n";
