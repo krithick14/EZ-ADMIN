@@ -2,7 +2,7 @@
 
 function install {
 
-    sudo apt install figlet apache2 at xterm
+    sudo apt install figlet apache2 at xterm nautilus
     if [ $? -ne 0 ]; then
         echo "INSTALLATION FAILED !!!"
     fi
