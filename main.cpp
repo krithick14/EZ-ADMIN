@@ -5,7 +5,7 @@
 #include "Schedule.cpp"
 using namespace std;
 
-// FUNCTION TO CONFIRM EXI
+// FUNCTION TO CONFIRM EXIT
 void confirm_exit()
 {
     string opt;
