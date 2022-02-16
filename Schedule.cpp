@@ -88,6 +88,7 @@ public:
 
         out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
         cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
+        
         system(start_command.c_str());
     }
 

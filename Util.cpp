@@ -54,7 +54,7 @@ string *splitDate(string str)
 class Util
 {
 public:
-    // VIEW LOGS
+    // VIEW SERVER LOGS
     void viewlogs()
     {
         ifstream file;
@@ -77,7 +77,7 @@ public:
         }
     }
 
-    // CLEAR LOGS
+    // CLEAR SERVER LOGS
     void clearlogs()
     {
         int attempt = 0;

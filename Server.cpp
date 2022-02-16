@@ -49,6 +49,7 @@ public:
     {
         if (!status())
         {
+            // TRY BLOCK TO CHECK IF SERVER IS OPERATING PROPERLY
             try
             {
                 int exit_code = system("sudo service apache2 start 2> /dev/null");
@@ -88,6 +89,7 @@ public:
         if (status())
         {
             system("killall xterm  2> /dev/null");
+            // TRY BLOCK TO CHECK IF SERVER IS OPERATING PROPERLY
             try
             {
                 int exit_code = system("sudo service apache2 stop 2> /dev/null");
@@ -122,7 +124,7 @@ public:
     void restart()
     {
         system("killall xterm  2> /dev/null");
-
+        // TRY BLOCK TO CHECK IF SERVER IS OPERATING PROPERLY
         try
         {
             int exit_code = system("sudo service apache2 restart 2> /dev/null");

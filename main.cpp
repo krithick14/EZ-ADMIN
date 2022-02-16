@@ -106,13 +106,15 @@ int main()
         }
         case 6:
         {
+            // VIEW SERVER LOGS
+
             util.viewlogs();
             confirm_exit();
             break;
         }
         case 7:
         {
-            // CLEARING LOGS
+            // CLEARING SERVER LOGS
 
             util.clearlogs();
             confirm_exit();
@@ -120,7 +122,7 @@ int main()
         }
         case 8:
         {
-            // SEARCH LOGS USING IP ADDRESS
+            // SEARCH CLIENT LOGS USING IP ADDRESS
 
             string ip;
             cout << "\n\tEnter an IP Address: ";
@@ -131,7 +133,7 @@ int main()
         }
         case 9:
         {
-            // SEARCH LOGS USING DATE/MONTH
+            // SEARCH CLIENT LOGS USING DATE/MONTH
 
             search.search_menu();
             confirm_exit();
