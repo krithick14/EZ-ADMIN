@@ -68,8 +68,8 @@ public:
             system("killall xterm  2> /dev/null");
             system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"tail -n 15 /var/log/apache2/access.log | cut -d \' \'  -f 1,4,5  | tr -s ' ' '\t'  \" & ");
 
-            cout << "\n\tServer Started by " << getenv("USER") << " on " << now << "\n\n";
             out_file << "Server Started by " << getenv("USER") << " on " << now << "\n";
+            cout << "\n\tServer Started by " << getenv("USER") << " on " << now << "\n\n";
             cout << "\n\tClick the link to View: "
                  << "http://127.0.0.1/\n\n";
         }
@@ -145,8 +145,8 @@ public:
         out_file << "Server Restarted by " << getenv("USER") << " on " << now << "\n";
 
         cout << "\n\tServer Restarted by " << getenv("USER") << " on " << now << "\n\n";
-        cout << "\tServer Restarted Sucessfully\n";
-        cout << "\tClick the link to View: "
+        cout << "\n\tServer Restarted Sucessfully\n\n";
+        cout << "\n\tClick the link to View: "
              << "http://127.0.0.1/\n\n";
     }
 };
