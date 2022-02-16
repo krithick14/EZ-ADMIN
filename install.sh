@@ -1,4 +1,4 @@
-#!/bin/bas
+#!/bin/bash
 
 function install {
 
@@ -10,9 +10,11 @@ function install {
 }
 
 echo -e "\n\n"
-figlet -c SERVER MANAGER
+echo -e "\t\t\t===================\n"
+echo -e "\t\t\t   SERVER MANAGER"
+echo -e "\n\t\t\t==================="
 
-echo -e "\n\t\t\tINSTALLING DEPENDENCIES ... \n\n\n"
+echo -e "\n\t\t\tINSTALLING DEPENDENCIES\n\n\n"
 
 ping -c 5 8.8.8.8 &>/dev/null
 
