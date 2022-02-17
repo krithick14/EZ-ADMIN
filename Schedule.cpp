@@ -8,6 +8,7 @@ class Schedule
 
 public:
     int opti;
+    string date = "date +%d/%b/%+4Y";
 
     // Constructor
     Schedule()
@@ -21,7 +22,6 @@ public:
     {
         out_file.close();
     }
-
 
     // FUNCTION TO DISPLAY THE SCHEDULE MENU OPTIONS
     void schedule_menu()
@@ -67,7 +67,7 @@ public:
         {
             // REMOVE ALL SCHEDULED TASKS
             system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
-            
+
             cout << "\tAll Scheduled tasks removed\n";
         }
         else if (opti == 5)
@@ -81,15 +81,14 @@ public:
         }
     }
 
-
     // SCHEDULING START
     void schedule_start(string time)
     {
         string start_command = "echo 'sudo service apache2 start' | sudo at " + time + " today 2> /dev/null";
 
-        out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
-        cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << "\n";
-        
+        out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+
         system(start_command.c_str());
     }
 
@@ -98,8 +97,8 @@ public:
     {
         string stop_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
 
-        out_file << "\nServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n\n";
-        cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << "\n";
+        out_file << "\nServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
 
         system(stop_command.c_str());
     }
@@ -109,8 +108,8 @@ public:
     {
         string restart_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
 
-        out_file << "\nServer Restart Scheduled by " << getenv("USER") << " at " << time << "\n\n";
-        cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << "\n";
+        out_file << "\nServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
 
         system(restart_command.c_str());
     }

@@ -12,7 +12,7 @@ public:
         system("mkdir -p /home/$USER/backup_server");
         system("cd /var/www/html &&  sudo tar -cpf /home/$USER/backup_server/backup_$(date +%F).tar.gz ./* && sudo chown $USER /home/$USER/backup_server/backup_$(date +%F).tar.gz > /dev/null");
 
-        cout << "\tBackup Done\n\n";
+        cout << "\n\tBackup Completed\n\n";
 
         cout << "\tBackup Saved at " << exec("printf $HOME") << "/backup_server/\n\n";
 

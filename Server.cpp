@@ -69,6 +69,8 @@ public:
             system("xterm -T Client_logs -fa 'Monospace' -fs 12 -e  watch \"tail -n 15 /var/log/apache2/access.log | cut -d \' \'  -f 1,4,5  | tr -s ' ' '\t'  \" & ");
 
             out_file << "Server Started by " << getenv("USER") << " on " << now << "\n";
+
+            cout << "\n\tServer Started Successfully\n";
             cout << "\n\tServer Started by " << getenv("USER") << " on " << now << "\n\n";
             cout << "\n\tClick the link to View: "
                  << "http://127.0.0.1/\n\n";
@@ -105,10 +107,10 @@ public:
 
                 return;
             }
-
-            cout << "\n\tServer Stopped by " << getenv("USER") << " on " << now << "\n";
             out_file << "Server Stopped by " << getenv("USER") << " on " << now << "\n";
-            cout << "\tServer Stopped\n";
+
+            cout << "\n\tServer Stopped Successfully\n";
+            cout << "\n\tServer Stopped by " << getenv("USER") << " on " << now << "\n";
         }
         else
         {
@@ -144,8 +146,8 @@ public:
 
         out_file << "Server Restarted by " << getenv("USER") << " on " << now << "\n";
 
-        cout << "\n\tServer Restarted by " << getenv("USER") << " on " << now << "\n\n";
         cout << "\n\tServer Restarted Sucessfully\n\n";
+        cout << "\n\tServer Restarted by " << getenv("USER") << " on " << now << "\n\n";
         cout << "\n\tClick the link to View: "
              << "http://127.0.0.1/\n\n";
     }
