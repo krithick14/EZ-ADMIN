@@ -145,7 +145,7 @@ public:
             num = exec(command + " | wc -l");
             if (stoi(num) == 0)
             {
-                cout << "\n\tNo Logs found on " << month << " !!!\n";
+                cout << "\n\tNo Logs found in " << month << " !!!\n";
             }
             else
             {

@@ -34,7 +34,7 @@ void menu()
     cout << "\t6)View Server Logs\n\n";
     cout << "\t7)Clear Server Logs\n\n";
     cout << "\t8)Search Client logs using IP Address\n\n";
-    cout << "\t9)Search Client logs using Time\n\n";
+    cout << "\t9)Search Client logs using Time Stamp\n\n";
     cout << "\t10)Know about commands\n\n";
     cout << "\t11)Exit\n\n\n";
     cout << "\tEnter Your Option: ";
