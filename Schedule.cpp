@@ -41,7 +41,7 @@ public:
 
         if (opti == 1)
         {
-            cout << "\tEnter Start Time in 24 Hours Format (Eg: 18.30) :";
+            cout << "\tEnter Start Time in 24 Hours Format (HH.MM) :";
             cin >> time;
 
             // START
@@ -49,7 +49,7 @@ public:
         }
         else if (opti == 2)
         {
-            cout << "\tEnter Stop Time in 24 Hours Format (Eg: 10.00) :";
+            cout << "\tEnter Stop Time in 24 Hours Format (HH.MM) :";
             cin >> time;
 
             // STOP
@@ -57,7 +57,7 @@ public:
         }
         else if (opti == 3)
         {
-            cout << "\tEnter Restart Time in 24 Hours Format (Eg: 10.00) :";
+            cout << "\tEnter Restart Time in 24 Hours Format (HH.MM) :";
             cin >> time;
 
             // RESTART
@@ -67,6 +67,7 @@ public:
         {
             // REMOVE ALL SCHEDULED TASKS
             system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
+            
             cout << "\tAll Scheduled tasks removed\n";
         }
         else if (opti == 5)

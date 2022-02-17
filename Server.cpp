@@ -25,7 +25,7 @@ public:
         out_file.open(".server_logs.txt", ios::app);
 
         // GETTING THE STATUS OF THE SERVER
-        stat = system("pgrep apache2 >> /dev/null");
+        stat = system("pgrep apache2 >> /dev/null"); 
     }
 
     // DESTRUCTOR
@@ -52,7 +52,7 @@ public:
             // TRY BLOCK TO CHECK IF SERVER IS OPERATING PROPERLY
             try
             {
-                int exit_code = system("sudo service apache2 start 2> /dev/null");
+                int exit_code = system("sudo service apache2 start 2> /dev/null"); 
                 if (exit_code != 0)
                     throw "Server Start failed - ";
             }

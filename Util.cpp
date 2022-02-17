@@ -73,18 +73,20 @@ public:
             file.seekg(0, ios::beg);
             while (getline(file, data))
                 cout << "\t" << data << endl;
-            file.close();
         }
+        file.close();
     }
 
     // CLEAR SERVER LOGS
     void clearlogs()
     {
         int attempt = 0;
+
         termios oldt;
         tcgetattr(STDIN_FILENO, &oldt);
         termios newt = oldt;
         newt.c_lflag &= ~ECHO;
+
         while (attempt != 2)
         {
             string temp = "", pass = "admin123";
