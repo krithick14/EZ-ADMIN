@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include "Util.cpp"
+
 using namespace std;
 class Schedule
 {

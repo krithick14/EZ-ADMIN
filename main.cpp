@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include "Server.cpp"
-#include "Backup.cpp"
-#include "Schedule.cpp"
 using namespace std;
 
 // FUNCTION TO CONFIRM EXIT
