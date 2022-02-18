@@ -44,3 +44,8 @@ STEPS TO USE THIS:<br><br>
 <img src =/img/10.png>
 <br>
 <img src =/img/11.png>
+
+<h3>LINUX HELP MENU</h3>
+<img src =/img/12.png>
+<br>
+<img src =/img/13.png>
