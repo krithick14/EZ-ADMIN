@@ -66,9 +66,17 @@ public:
         else if (opti == 4)
         {
             // REMOVE ALL SCHEDULED TASKS
-            system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
-
-            cout << "\tAll Scheduled tasks removed\n";
+            string check_empty = exec("sudo atq | wc -l");
+            
+            if (stoi(check_empty)!= 0)
+            {
+                system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
+                cout << "\tAll Scheduled tasks removed\n";
+            }
+            else
+            {
+                cout<<"\tNo jobs are scheduled!!!\n";
+            }
         }
         else if (opti == 5)
         {
