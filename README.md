@@ -39,5 +39,6 @@ STEPS TO USE THIS:<br><br>
 <h3>FILTER CLIENT LOGS</h3>
 <img src =/img/8.png>
 <br>
-
+<img src =/img/9.png>
+<br>
 
