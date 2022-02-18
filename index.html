@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            background-color: black;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 100px;
+            z-index: 10000;
+            transition: 0.6s;
+            ;
+        }
+
+        header .logo {
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.6s;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+            padding: 100px;
+            background: #000000;
+            ;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            transition: 0.5s;
+            z-index: 2;
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        .content h2 {
+            color: #fff;
+            font-size: 2.5em;
+        }
+
+        .content h2 span {
+            color: #40c3ff;
+            font-size: 1.2em;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .content a {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 0px;
+            background: #fff;
+            color: #000;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .sci {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 100px;
+            top: 500px;
+            bottom: 150px;
+        }
+
+        .sci li {
+            position: relative;
+            place-items: center;
+            height: 50px;
+            text-decoration: none;
+            color: #FFF;
+            list-style: none;
+        }
+
+        @media (max-width:767px) {
+            header {
+
+                padding: 20px 50px;
+            }
+
+            .banner {
+                padding: 100px 50px 150px;
+            }
+
+            .banner h2 {
+                font-size: 1.8em;
+            }
+
+            .banner .content p,
+            .banner .content a {
+                font-size: 1em;
+            }
+
+            .sci {
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                margin-top: 50px;
+                margin-left: 50px;
+                flex-direction: column;
+            }
+
+            .sci li a {
+                margin: initial;
+                margin-right: 10px;
+
+            }
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EZ-ADMIN</title>
+    <meta name="description" content="Krithick's Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <script>
+        var i = 0;
+        var txt = 'Hey There !!!';
+        var speed = 70;
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("title").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }</script>
+</head>
+
+<body onload="typeWriter()">
+    <section class="banner" id="sec">
+        <header>
+            <a href="#" class="logo">EZ<br>Admin</a>
+        </header>
+        <div class="content">
+            <h2 id="title"></h2>
+            <h2>Welcome to <span>EZ-Admin</span></h2>
+            <p>A Menu Driven Application To Ease The Process Of Operating  & Maintaining A Linux Server Implemented Using
+                C++</p>
+            <a href="https://www.github.com/krithick14/HCL_PROJECT">Know More</a>
+        </div>
+        <ul class="sci">
+            <li style="font-size: 20px"><b>Developed By:-</b></li>
+            <li>Aravind R</li>
+            <li>Arvind M Bharadwaj</li>
+            <li>Vishwa K</li>
+            <li>Sairam R</li>
+            <li>Pradeep V</li>
+            <li>Surya K</li>
+            <li>Krithick Kalyan T</li>
+        </ul>
+    </section>
+
+</body>
+
+</html>
