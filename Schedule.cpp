@@ -69,15 +69,17 @@ public:
         {
             // REMOVE ALL SCHEDULED TASKS
             string check_empty = exec("sudo atq | wc -l");
-            
-            if (stoi(check_empty)!= 0)
+
+            if (stoi(check_empty) != 0)
             {
                 system("for i in `sudo atq | awk '{print $1}'`;do sudo atrm $i;done");
+
                 cout << "\tAll Scheduled tasks removed\n";
+                out_file << "\nAll previously scheduled tasks were removed by " << getenv("USER") << " on " << exec(date) << "\n";
             }
             else
             {
-                cout<<"\tNo jobs are scheduled!!!\n";
+                cout << "\tNo jobs are scheduled!!!\n";
             }
         }
         else if (opti == 5)
