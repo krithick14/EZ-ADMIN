@@ -37,7 +37,7 @@ STEPS TO USE THIS:<br><br>
 <br>
 
 <h3>FILTER CLIENT LOGS</h3>
-<img src =/img/7.png>
+<img src =/img/8.png>
 <br>
 
 
