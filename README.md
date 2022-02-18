@@ -5,7 +5,7 @@ CLI Based Menu Driven Software for Linux Server Administration using C++
 
 A Menu Driven Application to ease the work of a Server Administrator/
 
-<b>STEPS TO USE THIS:</b><br><br>
+<b>STEPS TO USE THIS:</b><br>
         1)Download this repository and check whether the install.sh has executable permissions and run the file this will compile the c++ codes and give you a compiled binary file named ez-admin.<br><br>
         2)Now type ./ez-admin and press enter <br><br>
         3)You will see a menu with various options select the options you need by typing the number of the option.</p>
