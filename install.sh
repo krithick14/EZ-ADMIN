@@ -3,10 +3,11 @@
 function install {
 
     sudo apt install figlet apache2 at xterm
-    sudo mv ./ez_admin.html /var/www/html/ez_admin.html
+    sudo cp ./ez_admin.html /var/www/html/ez_admin.html
     if [ $? -ne 0 ]; then
         echo "INSTALLATION FAILED !!!"
     fi
+    ./main
 
 }
 
