@@ -25,13 +25,15 @@ STEPS TO USE THIS:<br><br>
 <h3>SCHEDULE MENU</h3>
 <img src =/img/4.png>
 <br>
-
-<h3>VIEW SERVER EVENT LOGS</h3>
 <img src =/img/5.png>
 <br>
 
-<h3>CLEAR SERVER LOGS</h3>
+<h3>VIEW SERVER EVENT LOGS</h3>
 <img src =/img/6.png>
+<br>
+
+<h3>CLEAR SERVER LOGS</h3>
+<img src =/img/7.png>
 <br>
 
 <h3>FILTER CLIENT LOGS</h3>
