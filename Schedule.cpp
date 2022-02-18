@@ -72,7 +72,7 @@ public:
             
             if (stoi(check_empty)!= 0)
             {
-                system("for i in `atq | awk '{print $1}'`;do atrm $i;done");
+                system("for i in `sudo atq | awk '{print $1}'`;do sudo atrm $i;done");
                 cout << "\tAll Scheduled tasks removed\n";
             }
             else
