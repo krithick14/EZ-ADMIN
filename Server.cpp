@@ -74,7 +74,7 @@ public:
             cout << "\n\tServer Started Successfully\n";
             cout << "\n\tServer Started by " << getenv("USER") << " on " << now << "\n\n";
             cout << "\n\tClick the link to View: "
-                 << "http://127.0.0.1/\n\n";
+                 << "http://127.0.0.1/ez_admin.html\n\n";
         }
         else
         {
@@ -150,6 +150,6 @@ public:
         cout << "\n\tServer Restarted Sucessfully\n\n";
         cout << "\n\tServer Restarted by " << getenv("USER") << " on " << now << "\n\n";
         cout << "\n\tClick the link to View: "
-             << "http://127.0.0.1/\n\n";
+             << "http://127.0.0.1/ez_admin.html\n\n";
     }
 };
