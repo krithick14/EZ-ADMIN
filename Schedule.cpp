@@ -68,6 +68,7 @@ public:
         else if (opti == 4)
         {
             // REMOVE ALL SCHEDULED TASKS
+
             string check_empty = exec("sudo atq | wc -l");
 
             if (stoi(check_empty) != 0)
@@ -96,33 +97,60 @@ public:
     // SCHEDULING START
     void schedule_start(string time)
     {
-        string start_command = "echo 'sudo service apache2 start' | sudo at " + time + " today 2> /dev/null";
+        try
+        {
+            string start_command = "echo 'sudo service apache2 start' | sudo at " + time + " today 2> /dev/null";
+            int exit_code = system(start_command.c_str());
 
-        out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
-        cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            if (exit_code != 0)
+                throw exit_code;
 
-        system(start_command.c_str());
+            out_file << "\nServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            cout << "\tServer Start Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        }
+        catch (int code)
+        {
+            cout << "\n\tServer Schedule Failed: Invalid Time\n";
+        }
     }
 
     // SCHEDULING STOP
     void schedule_stop(string time)
     {
-        string stop_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
+        try
+        {
+            string stop_command = "echo 'sudo service apache2 stop' | sudo at " + time + " today 2> /dev/null";
+            int exit_code = system(stop_command.c_str());
 
-        out_file << "\nServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
-        cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            if (exit_code != 0)
+                throw exit_code;
 
-        system(stop_command.c_str());
+            out_file << "\nServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            cout << "\tServer Stop Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        }
+        catch (int code)
+        {
+            cout << "\n\tServer Schedule Failed: Invalid Time\n";
+        }
     }
 
     // SCHEDULING RESTART
     void schedule_restart(string time)
     {
-        string restart_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
+        try
+        {
+            string restart_command = "echo 'sudo service apache2 restart' | sudo at " + time + " today 2> /dev/null";
+            int exit_code = system(restart_command.c_str());
 
-        out_file << "\nServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
-        cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            if (exit_code != 0)
+                throw exit_code;
 
-        system(restart_command.c_str());
+            out_file << "\nServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+            cout << "\tServer Restart Scheduled by " << getenv("USER") << " at " << time << " on " << exec(date) << "\n";
+        }
+        catch (int code)
+        {
+            cout << "\n\tServer Schedule Failed: Invalid Time\n";
+        }
     }
 };
