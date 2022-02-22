@@ -2,7 +2,7 @@
 
 function install {
 
-    sudo apt install figlet apache2 at xterm
+    sudo apt install figlet apache2 at xterm tar
     sudo cp ./ez_admin.html /var/www/html/ez_admin.html
     g++ main.cpp -o ez-admin
     if [ $? -ne 0 ]; then
