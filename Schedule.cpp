@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Util.cpp"
 
-using namespace std;
+using namespace std;d
 class Schedule
 {
     string time;
