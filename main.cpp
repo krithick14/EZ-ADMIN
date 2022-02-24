@@ -49,7 +49,7 @@ int main()
         system("figlet -c Admin Menu");
         cout << "\n";
         system("sudo echo admin > /dev/null");
-        cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1,2,3,4,5,6 --complement") << "\n";
+        cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1-6 --complement") << "\n";
         cout << "\n";
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
