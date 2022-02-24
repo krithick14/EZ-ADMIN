@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Server.cpp"
 using namespace std;
-// FUNCTION TO CONFIRM EXIT
+// FUNCTION TO CONFIRM EXITh
 void confirm_exit()
 {
     string opt;
