@@ -51,7 +51,7 @@ int main()
         int exit_code=system("sudo echo admin > /dev/null");
         if(exit_code!=0)
         {
-            exit(1);
+            exit(1);//exits if password is wrong
         }
         cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1-6 --complement") << "\n";
         cout << "\n";
