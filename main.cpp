@@ -48,17 +48,8 @@ int main()
 
         system("figlet -c Admin Menu");
         cout << "\n";
-<<<<<<< HEAD
         system("sudo echo admin > /dev/null");
         cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1-6 --complement") << "\n";
-=======
-        int exit_code = system("sudo echo admin > /dev/null");
-        if (exit_code != 0)
-        {
-            exit(1);
-        }
-        cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1,2,3,4,5,6 --complement") << "\n";
->>>>>>> 8ebc75c2e090ad0e7675d82d6811d62f49e3dbfb
         cout << "\n";
 
         cout << "\tLocal Ip :" << exec("hostname -I | awk '{print $1}'");
