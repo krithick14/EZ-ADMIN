@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Util.cpp"
 
-using namespace std;d
+using namespace std;
 
 class Schedule
 {
