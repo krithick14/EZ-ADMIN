@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Server.cpp"
 using namespace std;
-
+// Test
 // FUNCTION TO CONFIRM EXIT
 void confirm_exit()
 {
@@ -63,13 +63,13 @@ int main()
         Backup backup;
         Schedule schedule;
         Search search;
-        
+
         switch (option)
         {
         case 1:
         {
             // STARTING THE SERVER
-            
+
             server.start();
             confirm_exit();
             break;
