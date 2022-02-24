@@ -48,7 +48,11 @@ int main()
 
         system("figlet -c Admin Menu");
         cout << "\n";
-        system("sudo echo admin > /dev/null");
+        int exit_code=system("sudo echo admin > /dev/null");
+        if(exit_code!=0)
+        {
+            exit(1);
+        }
         cout << "\tStatus: " << exec("systemctl status apache2 | grep -i Active  |cut -d \" \" -f 1-6 --complement") << "\n";
         cout << "\n";
 
