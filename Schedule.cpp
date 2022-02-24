@@ -11,7 +11,7 @@ class Schedule
 
 public:
     int opti;
-    string date = "date +%d/%b/%+4Y";
+    string date = "date +%d/%b/%+Y";
 
     // Constructor
     Schedule()
