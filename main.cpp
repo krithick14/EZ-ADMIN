@@ -20,10 +20,9 @@ void confirm_exit()
     }
 }
 
-//DISPLAY MENU
+// DISPLAY MENU
 void menu()
 {
-
     cout << "\n\n\t1)Start Server\n\n";
     cout << "\t2)Stop Server\n\n";
     cout << "\t3)Restart Server\n\n";
@@ -45,14 +44,10 @@ int main()
     while (1)
     {
         int option;
-
         system("figlet -c Admin Menu");
         cout << "\n";
-        int exit_code=system("sudo echo admin > /dev/null");
-
-        //Exits if Sudo password is wrong
-        
-        if(exit_code!=0)
+        int exit_code = system("sudo echo admin > /dev/null");
+        if (exit_code != 0)
         {
             exit(1);
         }
@@ -65,15 +60,16 @@ int main()
 
         Server server;
         Util util;
-        Search search;
         Backup backup;
         Schedule schedule;
-
+        Search search;
+        
         switch (option)
         {
         case 1:
         {
             // STARTING THE SERVER
+            
             server.start();
             confirm_exit();
             break;
