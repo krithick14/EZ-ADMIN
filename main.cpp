@@ -4,7 +4,6 @@
 using namespace std;
 
 // FUNCTION TO CONFIRM EXIT
-// DUMMY
 void confirm_exit()
 {
     string opt;
