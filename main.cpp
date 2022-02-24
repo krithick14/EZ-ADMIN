@@ -3,7 +3,6 @@
 #include "Server.cpp"
 using namespace std;
 
-//HELLO
 // FUNCTION TO CONFIRM EXIT
 void confirm_exit()
 {
