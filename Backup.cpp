@@ -14,7 +14,7 @@ public:
     {
         // Get Time
         ttime = time(0);
-        now = ctime(&ttime)
+        now = ctime(&ttime);
 
         // File Open
         out_file.open(".server_logs.txt", ios::app);
