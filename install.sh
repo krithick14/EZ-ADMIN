@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function install {
-
+    sudo apt update
     sudo apt install figlet apache2 at xterm tar g++ build-essential
     sudo cp ./ez_admin.html /var/www/html/ez_admin.html
     g++ main.cpp -o ez-admin
