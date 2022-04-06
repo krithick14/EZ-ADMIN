@@ -58,7 +58,6 @@ public:
             for (int i = 0; i < 12; i++)
             {
                 if (s[1] == months[i])
-
                     if (s[2].length() == 4)
                         valid = true;
             }
