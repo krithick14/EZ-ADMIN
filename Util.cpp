@@ -118,14 +118,13 @@ public:
     // HELP MENU
     void help(string cmd)
     {
-        string full_cmd = cmd + " --version 1> /dev/null 2> /dev/null";
-        int exit_code = system(full_cmd.c_str());
+        string command = "man " + cmd + " 2>/dev/null";
+        int exit_code = system(command.c_str());
         if (exit_code != 0)
         {
             cout << "\n\t" << cmd << " - Command not found\n";
             return;
         }
-        string command = "man " + cmd;
-        system(command.c_str());
+        
     }
 };
