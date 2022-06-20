@@ -17,6 +17,10 @@ void confirm_exit()
         cout << "\n\tEXITED\n";
         exit(0);
     }
+    else
+    {
+        system("clear");
+    }
 }
 
 // DISPLAY MENU
